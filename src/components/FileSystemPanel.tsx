@@ -17,8 +17,8 @@ export const FileSystemPanel = () => {
   ];
 
   return (
-    <div className="fixed bottom-16 left-2 w-64 glass-ultra rounded border border-white/10 p-2 z-20">
-      <div className="text-xs text-cyan-400 font-mono mb-2 border-b border-white/10 pb-1">
+    <div className="fixed bottom-16 left-2 w-64 glass-ultra rounded border border-white/5 p-2 z-20 interactive">
+      <div className="text-xs text-white/80 font-mono mb-2 border-b border-white/10 pb-1">
         FILESYSTEM
       </div>
       
@@ -27,12 +27,12 @@ export const FileSystemPanel = () => {
           <button
             key={app.id}
             onClick={() => setSelectedApp(app.id)}
-            className={`flex flex-col items-center p-2 rounded transition-all hover:bg-white/5 ${
-              selectedApp === app.id ? 'bg-white/10' : ''
+            className={`flex flex-col items-center p-2 rounded transition-all interactive hover:glass-strong ${
+              selectedApp === app.id ? 'glass-strong' : ''
             }`}
           >
-            <app.icon size={14} className="text-cyan-400 mb-1" />
-            <span className="text-xs text-white font-mono leading-tight text-center">
+            <app.icon size={14} className="text-white/70 mb-1" />
+            <span className="text-xs text-white/80 font-mono leading-tight text-center">
               {app.name}
             </span>
           </button>
@@ -40,7 +40,7 @@ export const FileSystemPanel = () => {
       </div>
 
       <div className="mt-2 pt-2 border-t border-white/10">
-        <div className="text-xs text-gray-400 font-mono">
+        <div className="text-xs text-white/60 font-mono">
           Mount: /home/squared used 71%
         </div>
       </div>
