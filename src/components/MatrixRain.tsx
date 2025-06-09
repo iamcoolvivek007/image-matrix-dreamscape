@@ -19,8 +19,8 @@ export const MatrixRain = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Matrix characters - mix of Japanese katakana, numbers, and symbols
-    const matrixChars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?';
+    // Matrix characters - mix of binary, ASCII, and symbols
+    const matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?';
     const fontSize = 14;
     const columns = Math.floor(canvas.width / fontSize);
     
@@ -33,11 +33,10 @@ export const MatrixRain = () => {
     }
 
     const draw = () => {
-      // Create trailing effect
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      // Create trailing effect with black overlay
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#0f0'; // Green color
       ctx.font = `${fontSize}px monospace`;
 
       // Draw characters
@@ -49,14 +48,14 @@ export const MatrixRain = () => {
         const x = i * fontSize;
         const y = drops[i] * fontSize;
         
-        // Add some brightness variation
+        // Use white and gray colors only
         const brightness = Math.random();
         if (brightness > 0.98) {
-          ctx.fillStyle = '#fff'; // Bright white for highlights
+          ctx.fillStyle = '#ffffff'; // Bright white for highlights
         } else if (brightness > 0.95) {
-          ctx.fillStyle = '#8f8'; // Light green
+          ctx.fillStyle = '#cccccc'; // Light gray
         } else {
-          ctx.fillStyle = '#0f0'; // Standard green
+          ctx.fillStyle = '#666666'; // Dark gray
         }
         
         ctx.fillText(char, x, y);
@@ -83,7 +82,7 @@ export const MatrixRain = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 opacity-70"
+      className="absolute inset-0 z-0 opacity-30"
       style={{ mixBlendMode: 'screen' }}
     />
   );
